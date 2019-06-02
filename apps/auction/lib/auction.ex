@@ -2,9 +2,9 @@ defmodule Auction do
   @moduledoc """
   Documentation for Auction.
   """
-  alias Auction.{FakeRepo, Item}
+  alias Auction.{Repo, Item}
 
-  @repo FakeRepo
+  @repo Auction.Repo
 
   @doc """
   List Items.
