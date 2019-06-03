@@ -7,4 +7,11 @@ defmodule Auction.Item do
     field(:ends_at, :utc_datetime)
     timestamps()
   end
+
+  def changeset(item, params \\ %{}) do
+    item
+    |> Ecto.Changeset.cast(params, [:title, :description, :ends_at])
+    |> Ecto.Changeset.validate_required(:title)
+    |> Ecto.Changeset.validate_length(:title, min: 3)
+  end
 end
