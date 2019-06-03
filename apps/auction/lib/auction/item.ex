@@ -1,5 +1,6 @@
 defmodule Auction.Item do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "items" do
     field(:title, :string)
@@ -10,8 +11,9 @@ defmodule Auction.Item do
 
   def changeset(item, params \\ %{}) do
     item
-    |> Ecto.Changeset.cast(params, [:title, :description, :ends_at])
-    |> Ecto.Changeset.validate_required(:title)
-    |> Ecto.Changeset.validate_length(:title, min: 3)
+    |> cast(params, [:title, :description, :ends_at])
+    |> validate_required(:title)
+    |> validate_length(:title, min: 3)
+    |> validate_length(:description, max: 200)
   end
 end
