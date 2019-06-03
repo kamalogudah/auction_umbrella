@@ -15,6 +15,7 @@ defmodule Auction.Item do
     |> validate_required(:title)
     |> validate_length(:title, min: 3)
     |> validate_length(:description, max: 200)
+    |> validate_change(:ends_at, &validate/2)
   end
 
   defp validate(:ends_at, ends_at_date) do
