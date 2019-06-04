@@ -22,4 +22,9 @@ defmodule AuctionWeb.ItemController do
       {:error, item} -> render(conn, "new.html", item: item)
     end
   end
+
+  def edit(conn, %{"id" => id}) do
+    item = Auction.edit_item(id)
+    render(conn, "edit.html", item: item)
+  end
 end

@@ -43,4 +43,9 @@ defmodule Auction do
     |> Item.changeset(updates)
     |> @repo.update()
   end
+
+  def edit_item(id) do
+    get_item(id)
+    |> Item.changeset()
+  end
 end
