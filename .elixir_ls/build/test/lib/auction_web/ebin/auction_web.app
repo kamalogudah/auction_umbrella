@@ -10,6 +10,8 @@
                         'Elixir.AuctionWeb.ErrorHelpers',
                         'Elixir.AuctionWeb.ErrorView',
                         'Elixir.AuctionWeb.Gettext',
+                        'Elixir.AuctionWeb.ItemController',
+                        'Elixir.AuctionWeb.ItemView',
                         'Elixir.AuctionWeb.LayoutView',
                         'Elixir.AuctionWeb.PageController',
                         'Elixir.AuctionWeb.PageView',
