@@ -50,7 +50,7 @@ defmodule Auction do
   end
 
   def get_user(id), do: @repo.get!(User, id)
-  def new_user, do: User.changeset_with_password(%User{})
+  def new_user, do: User.changeset(%User{})
 
   def insert_user(params) do
     %User{}
