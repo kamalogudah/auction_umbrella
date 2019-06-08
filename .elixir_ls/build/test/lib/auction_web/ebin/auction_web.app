@@ -4,6 +4,7 @@
                              phoenix_html,plug_cowboy,phoenix,phoenix_ecto]},
               {description,"auction_web"},
               {modules,['Elixir.AuctionWeb','Elixir.AuctionWeb.Application',
+                        'Elixir.AuctionWeb.Authenticator',
                         'Elixir.AuctionWeb.ChannelCase',
                         'Elixir.AuctionWeb.ConnCase',
                         'Elixir.AuctionWeb.Endpoint',
