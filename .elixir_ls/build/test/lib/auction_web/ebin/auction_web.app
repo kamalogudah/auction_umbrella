@@ -17,6 +17,8 @@
                         'Elixir.AuctionWeb.PageView',
                         'Elixir.AuctionWeb.Router',
                         'Elixir.AuctionWeb.Router.Helpers',
+                        'Elixir.AuctionWeb.SessionController',
+                        'Elixir.AuctionWeb.SessionView',
                         'Elixir.AuctionWeb.UserController',
                         'Elixir.AuctionWeb.UserSocket',
                         'Elixir.AuctionWeb.UserView']},
