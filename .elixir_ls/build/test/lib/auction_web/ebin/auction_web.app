@@ -6,6 +6,7 @@
               {modules,['Elixir.AuctionWeb','Elixir.AuctionWeb.Application',
                         'Elixir.AuctionWeb.Authenticator',
                         'Elixir.AuctionWeb.BidController',
+                        'Elixir.AuctionWeb.BidView',
                         'Elixir.AuctionWeb.ChannelCase',
                         'Elixir.AuctionWeb.ConnCase',
                         'Elixir.AuctionWeb.Endpoint',
