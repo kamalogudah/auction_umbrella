@@ -10,10 +10,7 @@ defmodule Auction do
   @doc """
   List Items.
 
-  ## Examples
 
-      iex> Auction.list_items()
-      :world
 
   """
 
