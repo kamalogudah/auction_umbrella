@@ -25,7 +25,7 @@ defmodule Auction.MixProject do
   end
 
   def aliases do
-    [test: ["ecto.create --quiet", "test"]]
+    [test: ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 
   # Run "mix help deps" to learn about dependencies.
