@@ -1,4 +1,5 @@
 defmodule AuctionTest do
+  import Ecto.Query
   use ExUnit.Case
   alias Auction.{Item, Repo}
   doctest Auction
@@ -31,6 +32,19 @@ defmodule AuctionTest do
     test "returns a single Item based on id", %{items: items} do
       item = Enum.at(items, 1)
       assert item == Auction.get_item(item.id)
+    end
+  end
+
+  describe "insert_item/1" do
+    test "adds an Item to the database " do
+      count_query = from i in Item, select: count(i.id)
+      before_count = Repo.one(count_query)
+      { :ok, _item} = Auction.insert_item(%{title: "test_item"})
+      assert Repo.one(count_query) == before_count + 1
+    end
+
+    test "returns a an error on error" do
+      assert {:error, _changeset } = Auction.insert_item(%{foo: :bar})
     end
   end
 end
