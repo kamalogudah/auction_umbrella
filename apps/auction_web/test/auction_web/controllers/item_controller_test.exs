@@ -21,5 +21,10 @@ defmodule AuctionWeb.ItemControllerTest do
       post conn, "/items", %{"item"=> %{"title"=> "Item 1"}}
       assert Enum.count(Auction.list_items()) == before_count + 1
     end
+    test "with valid params, redirects to the new Item", %{conn: conn} do
+      conn = post conn, "/items", %{"item" => %{"title"=> "Item 1"}}
+      assert redirected_to(conn) =~ ~r|/items/\d+|
+    end
   end
+
 end
