@@ -1,6 +1,15 @@
 defmodule Auction do
   @moduledoc """
-  Documentation for Auction.
+  Provides functions for interacting with the database layer of an Auction application.
+
+  In order to keep database concerns separate from the rtest of an
+    application, these
+  functions are provided. Any interaction you need to do with the database
+    can be done
+  from within these functions. See an individual functio's documentation for
+    more
+  information and usage examples (like
+      `Auction.get_user_by_username_and_password/2`).
   """
   alias Auction.{Bid, Repo, Item, User, Password}
   import Ecto.Query
@@ -10,10 +19,7 @@ defmodule Auction do
   @doc """
   List Items.
 
-  ## Examples
 
-      iex> Auction.list_items()
-      :world
 
   """
 
@@ -65,6 +71,29 @@ defmodule Auction do
     |> User.changeset_with_password(params)
     |> @repo.insert
   end
+
+  @doc """
+  Retrieves a User from the database matching the provided username and password
+  ## Return Values
+
+  Depending on what is found in the datanase, two different values could be returned:
+    * an `Auction.User`struct: An `Auction.User`record was found that matched
+     the `username`and `password` that was provided.
+    * `false`: No `Auction.User`coould be found with the provided `username`
+      and `password`.
+  You can use tge returned value to determine whether or not the User is
+  authorized in your application. If an `Auction.User`is _not_ found based on
+  `username`, the computational work of hashiong a password is still done.
+
+  ## Examples
+      iex> insert_user(%{username: "kamal", password: "example", password_confirmation: "example", email_address: "test@example.com"})
+      ...> result = get_user_by_username_and_password("kamal", "example")
+      ...> match?(%Auction.User{username: "kamal"}, result)
+      true
+
+      iex> get_user_by_username_and_password("no_user", "bad_password")
+      false
+  """
 
   def get_user_by_username_and_password(username, password) do
     with user when not is_nil(user) <- @repo.get_by(User, %{username: username}),

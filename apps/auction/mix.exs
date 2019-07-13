@@ -11,7 +11,8 @@ defmodule Auction.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -21,6 +22,10 @@ defmodule Auction.MixProject do
       extra_applications: [:logger],
       mod: {Auction.Application, []}
     ]
+  end
+
+  def aliases do
+    [test: ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 
   # Run "mix help deps" to learn about dependencies.
